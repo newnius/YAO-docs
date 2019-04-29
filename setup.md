@@ -1,0 +1,98 @@
+# Steps to bring up the YAO components
+
+## Install docker
+```bash
+curl -fsSL https://get.docker.com | sh
+```
+
+
+## Install nvidia driver
+
+
+## Install Nvidia-docker
+Read [NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker) for guidance.
+
+Set default runtime to nvidia, see [Default runtime](https://github.com/NVIDIA/nvidia-docker/wiki/Advanced-topics#default-runtime).
+
+
+## Init a docker swarm cluster
+```bash
+# on master node
+docker swarm init
+
+# Add other nodes to the cluster
+docker swarm join --token A-LONG-TOKEN-STRING-HERE 192.168.0.1:2377
+```
+
+
+## Create an overlay network named `yao`
+```bash
+docker network create --driver overlay yao-net
+```
+
+
+## Start zk cluster
+```bash
+sbin/start_zks.sh
+```
+
+
+## Start Kafka cluster
+```bash
+sbin/start_kafka.sh
+```
+
+
+## Create kafka topic yao
+```bash
+# delete old
+bin/kafka-topics.sh \
+	--delete \
+	--zookeeper zookeeper-node1:2181,zookeeper-node2:2181,zookeeper-node3:2181 \
+	--topic yao
+
+# create new
+bin/kafka-topics.sh \
+	--create \
+	--zookeeper zookeeper-node1:2181,zookeeper-node2:2181,zookeeper-node3:2181 \
+	--replication-factor 3 \
+	--partitions 1 \
+	--topic yao
+```
+
+
+## Start the agents
+```bash
+sbin/start_agent.sh
+```
+
+
+## Start mysql
+```bash
+sbin/start_mysql.sh
+```
+
+
+## Start yao-scheduler
+```bash
+sbin/start_scheduler.sh
+```
+
+## Start Redis
+```bash
+sbin/start_redis.sh
+```
+
+## Start the web portal
+```bash
+sbin/start_portal.sh
+```
+
+## Configure
+
+update `BASE_URL` in `/data/yao-portal/config/config.inc.php` & `/data/yao-portal/config/config.js`
+
+## Install
+
+Visit `http://YOUR_IP/install.php`
+
