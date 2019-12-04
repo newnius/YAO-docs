@@ -27,7 +27,7 @@ docker swarm join --token A-LONG-TOKEN-STRING-HERE 192.168.0.1:2377
 
 ## Create an overlay network named `yao`
 ```bash
-docker network create --driver overlay yao-net
+docker network create --driver overlay --attachable --opt encrypted yao-net
 ```
 
 
@@ -61,9 +61,11 @@ bin/kafka-topics.sh \
 ```
 
 
-## Start the agents
+## Start the agents in each YAO-Worker
 ```bash
-sbin/start_agent.sh
+sbin/run_agent_helper.sh
+
+sbin/run_agent.sh
 ```
 
 
@@ -87,10 +89,6 @@ sbin/start_redis.sh
 ```bash
 sbin/start_portal.sh
 ```
-
-## Configure
-
-update `BASE_URL` in `/data/yao-portal/config/config.inc.php` & `/data/yao-portal/config/config.js`
 
 ## Install
 
