@@ -74,6 +74,10 @@ sbin/run_agent.sh
 sbin/start_mysql.sh
 ```
 
+## Start yao-optimizer on Master Node
+```bash
+sbin/run_optimizer.sh
+```
 
 ## Start yao-scheduler
 ```bash
