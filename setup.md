@@ -36,6 +36,10 @@ docker network create --driver overlay --attachable --opt encrypted yao-net
 sbin/start_zks.sh
 ```
 
+## Start HDFS cluster
+```bash
+sbin/run_hdfs.sh
+```
 
 ## Start Kafka cluster
 ```bash
@@ -66,6 +70,11 @@ bin/kafka-topics.sh \
 sbin/run_agent_helper.sh
 
 sbin/run_agent.sh
+```
+
+## Start the agent-master on YAO-Master
+```bash
+sbin/start_agent_master.sh
 ```
 
 
