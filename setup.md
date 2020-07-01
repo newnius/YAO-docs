@@ -30,6 +30,8 @@ docker swarm join --token A-LONG-TOKEN-STRING-HERE 192.168.0.1:2377
 docker network create --driver overlay --attachable --opt encrypted yao-net
 ```
 
+*Note: try remove encrypted when the containers cannot communicate cross nodes*
+
 
 ## Start zk cluster
 ```bash
