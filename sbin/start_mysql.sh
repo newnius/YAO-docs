@@ -11,5 +11,5 @@ docker service create \
 	-e MYSQL_DATABASE=yao \
 	--mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
 	mysql:5.7
-	
+
 #--mount type=bind,source=/data/mysql,target=/var/lib/mysql \

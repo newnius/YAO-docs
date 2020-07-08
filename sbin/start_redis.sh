@@ -7,4 +7,5 @@ docker service create \
 	--replicas 1 \
 	--detach=true \
 	--endpoint-mode dnsrr \
+	--mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \
 	redis redis-server --appendonly yes

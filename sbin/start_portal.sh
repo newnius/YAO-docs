@@ -9,7 +9,7 @@ docker service create \
 	--detach=true \
 	--publish 80:80 \
 	--env SITE_SCHEDULER_ADDR=http://yao-scheduler:8080 \
-	--env SITE_BASE_URL=http://210.28.132.13 \
+	--env SITE_BASE_URL=http://yao.pasalab.jluapp.com \
 	--env MYSQL_HOST=mysql \
 	--env MYSQL_PORT=3306 \
 	--env MYSQL_DATABASE=yao \

@@ -18,7 +18,7 @@ docker run \
 	--env ClientExtHost=${ip} \
 	--env Port=8000 \
 	--env HeartbeatInterval=5 \
-	--env KafkaBrokers=kafka-node1:9092,kafka-node2:9092,kafka-node3:9092 \
+	--env ReportAddress='http://yao-scheduler:8080/?action=agent_report' \
 	--env EnableEventTrigger='true' \
 	--env PYTHONUNBUFFERED=1 \
 	--mount type=bind,source=/etc/localtime,target=/etc/localtime,readonly \

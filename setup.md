@@ -27,43 +27,22 @@ docker swarm join --token A-LONG-TOKEN-STRING-HERE 192.168.0.1:2377
 
 ## Create an overlay network named `yao`
 ```bash
-docker network create --driver overlay --attachable --opt encrypted yao-net
+docker network create --driver overlay --attachable yao-net
+
+# docker network create --driver overlay --attachable --opt encrypted yao-net
 ```
 
 *Note: try remove encrypted when the containers cannot communicate cross nodes*
 
 
-## Start zk cluster
-```bash
-sbin/start_zks.sh
-```
-
-## Start HDFS cluster
+## Start HDFS cluster (Optional)
 ```bash
 sbin/run_hdfs.sh
 ```
 
-## Start Kafka cluster
+## Start GlusterFS cluster (Optional)
 ```bash
-sbin/start_kafka.sh
-```
-
-
-## Create kafka topic yao
-```bash
-# delete old
-bin/kafka-topics.sh \
-	--delete \
-	--zookeeper zookeeper-node1:2181,zookeeper-node2:2181,zookeeper-node3:2181 \
-	--topic yao
-
-# create new
-bin/kafka-topics.sh \
-	--create \
-	--zookeeper zookeeper-node1:2181,zookeeper-node2:2181,zookeeper-node3:2181 \
-	--replication-factor 3 \
-	--partitions 1 \
-	--topic yao
+sbin/start_glusterfs.sh
 ```
 
 
