@@ -7,8 +7,6 @@ docker service create \
 	--network yao-net \
 	--replicas 1 \
 	--detach=true \
-	--env KafkaBrokers=kafka-node1:9092,kafka-node2:9092,kafka-node3:9092 \
-	--env KafkaTopic=yao \
 	--env SchedulerPolicy=fair \
 	--env ListenAddr='0.0.0.0:8080' \
 	--env HDFSAddress='' \
