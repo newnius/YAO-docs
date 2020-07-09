@@ -4,7 +4,7 @@ import os
 import json
 
 '''Configuration'''
-BASE_URL = 'http://yao.pasalab.jluapp.com'
+BASE_URL = 'http://yao.example.com'
 ''''''
 
 sess = requests.Session()
@@ -98,7 +98,7 @@ if __name__ == '__main__':
 	# print(json.dumps(tasks))
 	job = {
 		'name': 'test',
-		'workspace': 'http://code.pasalab.jluapp.com/newnius/yao-job-benchmarks.git',
+		'workspace': 'https://github.com/tensorflow/benchmarks.git',
 		'cluster': 'default',
 		'priority': '25',
 		'run_before': '',
@@ -111,3 +111,4 @@ if __name__ == '__main__':
 		job_status(msg['job_name'])
 
 	job_list()
+
