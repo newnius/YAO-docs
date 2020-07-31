@@ -23,11 +23,15 @@ gluster peer probe 192.168.100.103
 gluster peer probe 192.168.100.104
 gluster peer probe 192.168.100.105
 gluster peer probe 192.168.100.106
+gluster peer status
 
 
-# Create Volume
+# Create & Start Volume
 gluster volume create yao replica 3 192.168.100.101:/data/yao 192.168.100.102:/data/yao 192.168.100.103:/data/yao 192.168.100.104:/data/yao 192.168.100.105:/data/yao 192.168.100.106:/data/yao
 
+gluster volume start yao
+
+gluster volume status
 
 # Client Mount
 sudo yum install glusterfs glusterfs-fuse attr -y
