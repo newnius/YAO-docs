@@ -4,8 +4,8 @@ ip=`hostname --ip-address`
 
 docker run \
 	--gpus all \
-	--pid=host \
 	--name yao-agent \
+	--pid=host \
 	--network yao-net \
 	--network-alias $(hostname) \
 	--hostname $(hostname) \
@@ -16,7 +16,7 @@ docker run \
 	--env ClientID=$(hostname) \
 	--env ClientHost=$(hostname) \
 	--env ClientExtHost=${ip} \
-	--env Port=8000 \
+	--env PORT=8000 \
 	--env HeartbeatInterval=5 \
 	--env ReportAddress='http://yao-scheduler:8080/?action=agent_report' \
 	--env EnableEventTrigger='true' \
